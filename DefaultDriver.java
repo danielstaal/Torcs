@@ -38,18 +38,18 @@ public class DefaultDriver extends AbstractDriver {
     public double getAcceleration(SensorModel sensors) {
         double[] sensorArray = new double[4];
         double output = neuralNetwork.getOutput(sensors);
-        return 1;
+        return output ;//1
     }
 
     @Override
     public double getSteering(SensorModel sensors) {
         Double output = neuralNetwork.getOutput(sensors);
-        return 0.5;
+        return output;//0.5
     }
 
     @Override
     public String getDriverName() {
-        return "Example Controller";
+        return "Gary";
     }
 
     @Override
@@ -76,22 +76,22 @@ public class DefaultDriver extends AbstractDriver {
             action = new Action();
         }
         action.steering = DriversUtils.alignToTrackAxis(sensors, 0.5);
-        if (sensors.getSpeed() > 60.0D) {
+        if (sensors.getSpeed() > 100.0D) {
             action.accelerate = 0.0D;
             action.brake = 0.0D;
         }
 
-        if (sensors.getSpeed() > 70.0D) {
+        if (sensors.getSpeed() > 130.0D) {
             action.accelerate = 0.0D;
             action.brake = -1.0D;
         }
 
-        if (sensors.getSpeed() <= 60.0D) {
+        if (sensors.getSpeed() <= 100.0D) {
             action.accelerate = (80.0D - sensors.getSpeed()) / 80.0D;
             action.brake = 0.0D;
         }
 
-        if (sensors.getSpeed() < 30.0D) {
+        if (sensors.getSpeed() < 60.0D) {
             action.accelerate = 1.0D;
             action.brake = 0.0D;
         }

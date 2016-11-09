@@ -1,6 +1,7 @@
 import scr.SensorModel;
 
 import java.io.*;
+import java.util.Random;
 
 public class NeuralNetwork implements Serializable {
 
@@ -8,9 +9,10 @@ public class NeuralNetwork implements Serializable {
 
     NeuralNetwork(int inputs, int hidden, int outputs) {
     }
-
+    Random r = new Random();
     public double getOutput(SensorModel a) {
-        return 0.5;
+
+        return r.nextDouble()*200-100;//0.5
     }
 
     //Store the state of this neural network
